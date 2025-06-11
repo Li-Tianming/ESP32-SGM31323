@@ -108,50 +108,7 @@ void loop() {
 
   sgm31323_write(data);
 
-    // Wire.beginTransmission(0x30);
-
-    // Wire.write(0);// reg0
-    // Wire.write(0x1f); // 
-    // delay(1);
-
-    // Wire.write(0);// reg0
-    // Wire.write(0x1c); // always on
-    // // delay(1);
-    // Wire.write(1);// reg1
-    // Wire.write(0x0e); // approximately 2s
-    // // delay(1);
-    // Wire.write(2); // reg2
-    // Wire.write(0xfd); // PWM1 timer
-    // // delay(1);
-    // Wire.write(3); // reg3
-    // Wire.write(0xfd); // PWM2 timer
-    // delay(1);
-    // Wire.write(4); // reg4
-    // Wire.write(0x2c); // 01 = LED1 Always ON
-    // delay(1);
-    // Wire.write(5); // reg5
-    // Wire.write(0x33); // 
-    // delay(1);
-    // Wire.write(6); // reg6
-    // Wire.write(0x4f); // led1 current max
-    // delay(1);
-    // Wire.write(7); // reg7
-    // Wire.write(0x4f); // led2 current max
-    // delay(1);
-    // Wire.write(8); // reg8
-    // Wire.write(0x4f); // led3 current max
-
-
-    delay(1000);                      // wait for a second
-
-    // byte error = Wire.endTransmission();
-    // if(error == 0 ){
-    //   Serial.println("I2C device close ok\n");
-    // }    
-    // else if (error==4) {
-    //   Serial.println("Unknow error at address 0x");
-    // }
-    // delay(1000);                      // wait for a second
+  delay(1000);                      // wait for a second
 
   while(1){
 
