@@ -6,6 +6,6 @@ or systems with 3.3V or 5V supply voltages,
 as well as 3-cell NiCd, NiMH or Alkaline batteries. 
 No external components are required for the three constant current sinks.
 
-<img title="schematic" alt="Alt text" width="200" src="schematic.png">
+<img title="schematic" alt="Alt text" width="500" src="schematic.png">
 
-<video src='demo.mp4' width=180/>
+<video src='demo.mp4'/>
