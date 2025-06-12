@@ -89,6 +89,151 @@ void sgm31323_write(uint8_t* data)
 // 3v3 -> G-LED -> D2
 // 3v3 -> B-LED -> D3
 
+void sgm31323_red_solid()
+{
+  uint8_t data[9] = {
+    0x1c, // always on
+    0x0e, // approximately 2s
+    0xfd, // PWM1 timer
+    0xfd, // PWM2 timer
+    0x01, // D1 = Always ON
+    0x33, // PWM RISE 3 0x03, PWM FALL 0x03
+    0x4f, // led1 current
+    0x4f, // led2 current
+    0x4f  // led3 current 
+  };
+
+  sgm31323_write(data);
+
+}
+
+void sgm31323_green_solid()
+{
+  uint8_t data[9] = {
+    0x1c, // always on
+    0x0e, // approximately 2s
+    0xfd, // PWM1 timer
+    0xfd, // PWM2 timer
+    0x04, // D2 = Always ON
+    0x33, // PWM RISE 3 0x03, PWM FALL 0x03
+    0x4f, // led1 current
+    0x4f, // led2 current
+    0x4f  // led3 current 
+  };
+
+  sgm31323_write(data);
+
+}
+
+void sgm31323_blue_solid()
+{
+  uint8_t data[9] = {
+    0x1c, // always on
+    0x0e, // approximately 2s
+    0xfd, // PWM1 timer
+    0xfd, // PWM2 timer
+    0x10, // D3 = Always ON
+    0x33, // PWM RISE 3 0x03, PWM FALL 0x03
+    0x4f, // led1 current
+    0x4f, // led2 current
+    0x4f  // led3 current 
+  };
+
+  sgm31323_write(data);
+
+}
+
+void sgm31323_yellow_solid()
+{
+  uint8_t data[9] = {
+    0x1c, // always on
+    0x0e, // approximately 2s
+    0xfd, // PWM1 timer
+    0xfd, // PWM2 timer
+    0x05, // D1,D2 = Always ON
+    0x33, // PWM RISE 3 0x03, PWM FALL 0x03
+    0x4f, // led1 current
+    0x4f, // led2 current
+    0x4f  // led3 current 
+  };
+
+  sgm31323_write(data);
+
+}
+
+void sgm31323_white_solid()
+{
+  uint8_t data[9] = {
+    0x1c, // always on
+    0x0e, // approximately 2s
+    0xfd, // PWM1 timer
+    0xfd, // PWM2 timer
+    0x15, // D1,D2,D3 = Always ON
+    0x33, // PWM RISE 3 0x03, PWM FALL 0x03
+    0x4f, // led1 current
+    0x4f, // led2 current
+    0x4f  // led3 current 
+  };
+
+  sgm31323_write(data);
+
+}
+
+
+void sgm31323_red_pulsing()
+{
+  uint8_t data[9] = {
+    0x1c, // always on
+    0x0e, // approximately 2s
+    0xfd, // PWM1 timer
+    0xfd, // PWM2 timer
+    0x02, // D1 = PWM1
+    0x33, // PWM RISE 3 0x03, PWM FALL 0x03
+    0x4f, // led1 current
+    0x4f, // led2 current
+    0x4f  // led3 current 
+  };
+
+  sgm31323_write(data);
+
+}
+
+void sgm31323_green_pulsing()
+{
+  uint8_t data[9] = {
+    0x1c, // always on
+    0x0e, // approximately 2s
+    0xfd, // PWM1 timer
+    0xfd, // PWM2 timer
+    0x08, // D2 = PWM1
+    0x33, // PWM RISE 3 0x03, PWM FALL 0x03
+    0x4f, // led1 current
+    0x4f, // led2 current
+    0x4f  // led3 current 
+  };
+
+  sgm31323_write(data);
+
+}
+
+void sgm31323_blue_pulsing()
+{
+  uint8_t data[9] = {
+    0x1c, // always on
+    0x0e, // approximately 2s
+    0xfd, // PWM1 timer
+    0xfd, // PWM2 timer
+    0x20, // D3 = PWM1
+    0x33, // PWM RISE 3 0x03, PWM FALL 0x03
+    0x4f, // led1 current
+    0x4f, // led2 current
+    0x4f  // led3 current 
+  };
+
+  sgm31323_write(data);
+
+}
+
 
 // the loop function runs over and over again forever
 void loop() {
@@ -99,7 +244,7 @@ void loop() {
     0x0e, // approximately 2s
     0xfd, // PWM1 timer
     0xfd, // PWM2 timer
-    0x0E, // 01 = LED1 Always ON
+    0x0e, // 00 = Always OFF 01 = Always ON 10 = PWM1 11 = PWM2
     0x33, // PWM RISE 3 0x03, PWM FALL 0x03
     0x4f, // led1 current
     0x4f, // led2 current
@@ -108,13 +253,45 @@ void loop() {
 
   sgm31323_write(data);
 
-  delay(1000);                      // wait for a second
+  delay(4000);    // wait for a second
 
-  while(1){
+  sgm31323_red_solid();
+
+  delay(3000);    // wait for a second
+
+  sgm31323_green_solid();
+
+  delay(3000);    // wait for a second
+
+  sgm31323_blue_solid();
+
+  delay(3000);    // wait for a second
+
+  sgm31323_yellow_solid();
+
+  delay(3000);    // wait for a second
+
+  sgm31323_white_solid();
+
+  delay(3000);
+
+  sgm31323_red_pulsing();
+
+  delay(4000);
+
+  sgm31323_green_pulsing();
+
+  delay(4000);
+
+  sgm31323_blue_pulsing();
+
+  delay(4000);
+
+  // while(1){
 
     digitalWrite(LED_BUILTIN, HIGH);  // turn the LED on (HIGH is the voltage level)
     delay(1000);                      // wait for a second
     digitalWrite(LED_BUILTIN, LOW);   // turn the LED off by making the voltage LOW
     delay(1000);   
-  }                   // wait for a second
+  // }
 }
